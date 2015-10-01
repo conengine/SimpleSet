@@ -1,0 +1,22 @@
+(* Mathematica Test File *)
+Test[
+	singletonQ@setMake@{}
+	,
+	False
+	,
+	TestID->"singletonQ-20150930-G0O6M9"
+]
+Test[
+	singletonQ@setMake@{3}
+	,
+	True
+	,
+	TestID->"singletonQ-20150930-R3Y6O0"
+]
+Test[
+	singletonQ@setMake@{1,2}
+	,
+	False
+	,
+	TestID->"singletonQ-20150930-Z3C1O6"
+]
