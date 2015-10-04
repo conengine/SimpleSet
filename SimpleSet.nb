@@ -1,0 +1,2715 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     94472,       2706]
+NotebookOptionsPosition[     90637,       2572]
+NotebookOutlinePosition[     91010,       2588]
+CellTagsIndexPosition[     90967,       2585]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Tools", "Section",
+ CellChangeTimes->{{3.6526045539507465`*^9, 3.6526045555158362`*^9}, 
+   3.6526047497239447`*^9}],
+
+Cell[CellGroupData[{
+
+Cell["\[OpenCurlyDoubleQuote]suit.mt\[CloseCurlyDoubleQuote] generator", \
+"Subsection",
+ CellChangeTimes->{{3.652604560626128*^9, 3.6526045647583647`*^9}, {
+  3.6526047421695123`*^9, 3.6526047437456026`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"pathTests", "=", 
+  RowBox[{"FileNameJoin", "@", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"NotebookDirectory", "[", "]"}], ",", "\"\<Tests\>\""}], 
+    "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.652604597045212*^9, 3.652604645571987*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Tarou\\\\Documents\\\\Google \
+Drive\\\\Mathematica\\\\WolframWorkspaces\\\\Base\\\\SimpleSet\\\\Tests\"\>"],\
+ "Output",
+ CellChangeTimes->{
+  3.6526045763530283`*^9, {3.652604631927207*^9, 3.6526046594897833`*^9}, 
+   3.65260470471237*^9, 3.6526759758854485`*^9, 3.6526764013367834`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"SetDirectory", "@", "pathTests"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"FileExistsQ", "@", "#"}], ",", 
+     RowBox[{"DeleteFile", "@", "#"}]}], "]"}], "&"}], "@", 
+  "\"\<suite.mt\>\""}], "\[IndentingNewLine]", 
+ RowBox[{"\"\<TestSuite@{\\n\>\"", "<>", 
+  RowBox[{"StringJoin", "@", 
+   RowBox[{"Riffle", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"\"\<\\\"\>\"", "<>", "#", "<>", "\"\<\\\"\>\""}], "&"}], "/@", 
+      RowBox[{"FileNames", "[", "\"\<*.mt\>\"", "]"}]}], ",", 
+     "\"\<,\\n\>\""}], "]"}]}], "<>", "\"\<}\>\""}], "\[IndentingNewLine]", 
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<suite.mt\>\"", ",", "%", ",", "\"\<Text\>\""}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.65260465209136*^9, 3.652604675277686*^9}, {
+  3.65260471311285*^9, 3.652604730292833*^9}, {3.6526053099040823`*^9, 
+  3.652605321352737*^9}}],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\Tarou\\\\Documents\\\\Google \
+Drive\\\\Mathematica\\\\WolframWorkspaces\\\\Base\\\\SimpleSet\\\\Tests\"\>"],\
+ "Output",
+ CellChangeTimes->{{3.652604660246826*^9, 3.6526047308868666`*^9}, {
+   3.6526053105901213`*^9, 3.652605321804763*^9}, 3.6526759768735056`*^9, 
+   3.6526764022368345`*^9}],
+
+Cell[BoxData["\<\"TestSuite@{\\n\\\"Element.mt\\\",\\n\\\"setMake.mt\\\",\\n\\\
+\"singletonQ.mt\\\",\\n\\\"Subsets.mt\\\",\\n\\\"Union.mt\\\"}\"\>"], "Output",
+ CellChangeTimes->{{3.652604660246826*^9, 3.6526047308868666`*^9}, {
+   3.6526053105901213`*^9, 3.652605321804763*^9}, 3.6526759768735056`*^9, 
+   3.652676402239835*^9}],
+
+Cell[BoxData["\<\"suite.mt\"\>"], "Output",
+ CellChangeTimes->{{3.652604660246826*^9, 3.6526047308868666`*^9}, {
+   3.6526053105901213`*^9, 3.652605321804763*^9}, 3.6526759768735056`*^9, 
+   3.6526764022508354`*^9}]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "Section"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"setMake", "@", 
+  RowBox[{"{", "3", "}"}]}]], "Input",
+ CellChangeTimes->{{3.6528552852342157`*^9, 3.6528552880583773`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", 
+     RowBox[{"{", "3", "}"}]}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{3.6528552883293924`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"singletonQ", "@", 
+  RowBox[{"setMake", "@", 
+   RowBox[{"{", "3", "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.652855290002488*^9, 3.6528553010381193`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \[NoBreak]\\!\\(1024\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$RecursionLimit/reclim\\\", ButtonNote -> \
+\\\"$RecursionLimit::reclim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6528553015081463`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \[NoBreak]\\!\\(1024\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$RecursionLimit/reclim\\\", ButtonNote -> \
+\\\"$RecursionLimit::reclim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6528553015661497`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \[NoBreak]\\!\\(1024\\)\[NoBreak] \
+exceeded. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/$RecursionLimit/reclim\\\", ButtonNote -> \
+\\\"$RecursionLimit::reclim\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.652855301652155*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[\\($RecursionLimit :: reclim\\), \
+\\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during this calculation. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.6528553017531605`*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{{3.652855293026661*^9, 3.6528553024011974`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"setMake", "@", 
+  RowBox[{"Range", "@", "3"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Subsets", "@", "%"}], "//", "TraditionalForm"}]}], "Input",
+ CellChangeTimes->{{3.652603012278854*^9, 3.652603076649536*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SimpleSet`Private`set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{{3.652603021455379*^9, 3.652603076981555*^9}, 
+   3.6526031094974146`*^9}],
+
+Cell[BoxData[
+ FormBox[
+  RowBox[{"\[LeftBracketingBar]", 
+   RowBox[{
+    FormBox[
+     RowBox[{"\[LeftBracketingBar]", "\[RightBracketingBar]"}],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{"\[LeftBracketingBar]", "1", "\[RightBracketingBar]"}],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{"\[LeftBracketingBar]", "2", "\[RightBracketingBar]"}],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{"\[LeftBracketingBar]", "3", "\[RightBracketingBar]"}],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{"\[LeftBracketingBar]", 
+      RowBox[{"1", ",", "2"}], "\[RightBracketingBar]"}],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{"\[LeftBracketingBar]", 
+      RowBox[{"1", ",", "3"}], "\[RightBracketingBar]"}],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{"\[LeftBracketingBar]", 
+      RowBox[{"2", ",", "3"}], "\[RightBracketingBar]"}],
+     TraditionalForm], ",", 
+    FormBox[
+     RowBox[{"\[LeftBracketingBar]", 
+      RowBox[{"1", ",", "2", ",", "3"}], "\[RightBracketingBar]"}],
+     TraditionalForm]}], "\[RightBracketingBar]"}], 
+  TraditionalForm]], "Output",
+ CellChangeTimes->{{3.652603021455379*^9, 3.652603076981555*^9}, 
+   3.6526031095014153`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"setMake", "@", 
+  RowBox[{"{", "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Subsets", "@", "%"}]}], "Input",
+ CellChangeTimes->{{3.652603012278854*^9, 3.652603076649536*^9}, {
+  3.6526031104714704`*^9, 3.652603119636995*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SimpleSet`Private`set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{{3.6526031143686934`*^9, 3.6526031199480124`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SimpleSet`Private`set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"SimpleSet`Private`set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", 
+          RowBox[{"{", "}"}]}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}], "}"}]}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{{3.6526031143686934`*^9, 3.652603119952013*^9}}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Test File gen.", "Section",
+ CellChangeTimes->{{3.6525961960831447`*^9, 3.6525962024105062`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{"testCase", "//", "ClearAll"}], "\[IndentingNewLine]", 
+ RowBox[{"testCase", "~", "SetAttributes", "~", 
+  "HoldFirst"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"testCase", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"test_", ",", "result_"}], "}"}], ",", 
+    RowBox[{"testID_String:", "\"\<\>\""}]}], "]"}], ":=", 
+  RowBox[{"\"\<Test[\n\\t\>\"", "<>", 
+   RowBox[{"ToString", "@", 
+    RowBox[{"Unevaluated", "@", "test"}]}], "<>", "\"\<\n\\t,\n\\t\>\"", "<>", 
+   RowBox[{"ToString", "@", 
+    RowBox[{"Unevaluated", "@", "result"}]}], "<>", 
+   "\"\<\n\\t,\n\\tTestID->\\\"\>\"", "<>", "testID", "<>", 
+   "\"\<\\\"\n]\>\""}]}]}], "Input",
+ CellChangeTimes->{{3.6525961683325577`*^9, 3.652596170209665*^9}, {
+  3.652596205645692*^9, 3.65259632923076*^9}, {3.6525963628946857`*^9, 
+  3.65259652276683*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"zz", "=", 
+  RowBox[{"setMake", "@", "Integers"}]}], "\[IndentingNewLine]", 
+ RowBox[{"qq", "=", 
+  RowBox[{"setMake", "@", "Rationals"}]}], "\[IndentingNewLine]", 
+ RowBox[{"rr", "=", 
+  RowBox[{"setMake", "@", "Reals"}]}], "\[IndentingNewLine]", 
+ RowBox[{"cc", "=", 
+  RowBox[{"setMake", "@", "Complexes"}]}]}], "Input",
+ CellChangeTimes->{{3.652848446286944*^9, 3.6528484527263117`*^9}, {
+  3.6528485169269843`*^9, 3.6528485321788564`*^9}, {3.652848585756921*^9, 
+  3.652848592369299*^9}, {3.652848623618087*^9, 3.652848653485795*^9}}],
+
+Cell[BoxData[
+ RowBox[{"set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", "Integers"}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.6528484535213575`*^9, 3.652848500379038*^9, {3.6528486344737077`*^9, 
+   3.6528486540008245`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", "Rationals"}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.6528484535213575`*^9, 3.652848500379038*^9, {3.6528486344737077`*^9, 
+   3.6528486540048246`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", "Reals"}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.6528484535213575`*^9, 3.652848500379038*^9, {3.6528486344737077`*^9, 
+   3.652848654007825*^9}}],
+
+Cell[BoxData[
+ RowBox[{"set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", "Complexes"}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{
+  3.6528484535213575`*^9, 3.652848500379038*^9, {3.6528486344737077`*^9, 
+   3.652848654010825*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{"pos", "=", 
+   RowBox[{"setMake", 
+    StyleBox[
+     RowBox[{"/", "@"}]], 
+    RowBox[{"PrecedesEqual", "[", 
+     RowBox[{"Integers", ",", "Rationals", ",", "Reals", ",", "Complexes"}], 
+     "]"}]}]}],
+  ShowSpecialCharacters->False,
+  ShowStringCharacters->True,
+  NumberMarks->True], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"expected", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Outer", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "\[Equal]", "#2"}], "\[Or]", 
+         RowBox[{"MatchQ", "[", 
+          RowBox[{
+           TagBox[
+            StyleBox["pos",
+             ShowSpecialCharacters->False,
+             ShowStringCharacters->True,
+             NumberMarks->True],
+            FullForm], ",", 
+           RowBox[{"PrecedesEqual", "[", 
+            RowBox[{"___", ",", "#", ",", "___", ",", "#2", ",", "___"}], 
+            "]"}]}], "]"}]}], "&"}], ",", "#", ",", "#"}], "]"}], "&"}], "[", 
+    RowBox[{"List", "@@", "pos"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"%", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.6528487792099857`*^9, 3.6528488870901566`*^9}, {
+  3.6528489225291834`*^9, 3.6528489422493114`*^9}, {3.6528490101731963`*^9, 
+  3.6528490361006794`*^9}, {3.652849395294224*^9, 3.6528495233855505`*^9}, {
+  3.6528495999519296`*^9, 3.6528496139317293`*^9}, {3.652850992620586*^9, 
+  3.6528509995079794`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"set", "[", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"elems\"\>", "\[Rule]", "Integers"}], ",", 
+     RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+    "\[RightAssociation]"}], "]"}], "\[PrecedesEqual]", 
+  RowBox[{"set", "[", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"elems\"\>", "\[Rule]", "Rationals"}], ",", 
+     RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+    "\[RightAssociation]"}], "]"}], "\[PrecedesEqual]", 
+  RowBox[{"set", "[", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"elems\"\>", "\[Rule]", "Reals"}], ",", 
+     RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+    "\[RightAssociation]"}], "]"}], "\[PrecedesEqual]", 
+  RowBox[{"set", "[", 
+   RowBox[{"\[LeftAssociation]", 
+    RowBox[{
+     RowBox[{"\<\"elems\"\>", "\[Rule]", "Complexes"}], ",", 
+     RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+    "\[RightAssociation]"}], "]"}]}]], "Output",
+ CellChangeTimes->{{3.652848871656274*^9, 3.652848887695191*^9}, {
+   3.6528489238632593`*^9, 3.652848942621332*^9}, {3.6528490125743337`*^9, 
+   3.652849037080735*^9}, {3.65284913332124*^9, 3.6528491419527335`*^9}, {
+   3.6528493370338917`*^9, 3.652849339556036*^9}, {3.652849474186736*^9, 
+   3.6528495239415817`*^9}, 3.6528496144307575`*^9, 3.6528510001890187`*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"True", "True", "True", "True"},
+    {
+     RowBox[{
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Rationals"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}], "\[Equal]", 
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Integers"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}]}], "True", "True", "True"},
+    {
+     RowBox[{
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Reals"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}], "\[Equal]", 
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Integers"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}]}], 
+     RowBox[{
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Reals"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}], "\[Equal]", 
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Rationals"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}]}], "True", "True"},
+    {
+     RowBox[{
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Complexes"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}], "\[Equal]", 
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Integers"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}]}], 
+     RowBox[{
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Complexes"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}], "\[Equal]", 
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Rationals"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}]}], 
+     RowBox[{
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Complexes"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}], "\[Equal]", 
+      RowBox[{"set", "[", 
+       RowBox[{"\[LeftAssociation]", 
+        RowBox[{
+         RowBox[{"\<\"elems\"\>", "\[Rule]", "Reals"}], ",", 
+         RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"abstruct\"\>"}]}], 
+        "\[RightAssociation]"}], "]"}]}], "True"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.652848871656274*^9, 3.652848887695191*^9}, {
+   3.6528489238632593`*^9, 3.652848942621332*^9}, {3.6528490125743337`*^9, 
+   3.652849037080735*^9}, {3.65284913332124*^9, 3.6528491419527335`*^9}, {
+   3.6528493370338917`*^9, 3.652849339556036*^9}, {3.652849474186736*^9, 
+   3.6528495239415817`*^9}, 3.6528496144307575`*^9, 3.652851000196019*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"testCase", "[", 
+  RowBox[{"{", 
+   RowBox[{"rr", ",", "expected"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6525963383112793`*^9, 3.652596341342453*^9}, {
+  3.652596372772251*^9, 3.6525963878561134`*^9}, {3.6525964435973015`*^9, 
+  3.652596446238453*^9}, {3.652848771435541*^9, 3.652848772256588*^9}, {
+  3.652849691541168*^9, 3.6528496939563065`*^9}}],
+
+Cell[BoxData["\<\"Test[\\n\\trr\\n\\t,\\n\\texpected\\n\\t,\\n\\tTestID->\\\"\
+\\\"\\n]\"\>"], "Output",
+ CellChangeTimes->{
+  3.652596446626475*^9, {3.652596486091732*^9, 3.6525965253719788`*^9}, {
+   3.652848712826189*^9, 3.6528487198935933`*^9}, 3.652848772600608*^9, {
+   3.6528496864058743`*^9, 3.6528496945183387`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"listA", "=", 
+   RowBox[{"Range", "@", "3"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"setA", "=", 
+   RowBox[{"setMake", "@", "listA"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"subsetsA", "=", 
+  RowBox[{"Subsets", "@", "listA"}]}]}], "Input",
+ CellChangeTimes->{{3.6525966346792307`*^9, 3.652596642604684*^9}, {
+  3.65259671770798*^9, 3.6525968399099693`*^9}, {3.652600838337512*^9, 
+  3.6526008722994547`*^9}, {3.6526009222583117`*^9, 3.6526009238404026`*^9}, {
+  3.6526009603134885`*^9, 3.6526009861979685`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "2", "}"}], ",", 
+   RowBox[{"{", "3", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6525966381094275`*^9, 3.6525966429457035`*^9}, {
+   3.6525967159608803`*^9, 3.652596779998543*^9}, {3.6525968209928875`*^9, 
+   3.652596840356995*^9}, 3.652600797238161*^9, 3.652600838729534*^9, 
+   3.652600873171504*^9, 3.6526009242894278`*^9, 3.652600986580991*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"setMake", "@", 
+  RowBox[{"{", "}"}]}], "\[IndentingNewLine]", 
+ RowBox[{"3", "\[Element]", "%"}]}], "Input",
+ CellChangeTimes->{{3.6526013373180523`*^9, 3.6526013439544315`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"SimpleSet`Private`set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", 
+     RowBox[{"{", "}"}]}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{{3.6526013379070854`*^9, 3.6526013444774613`*^9}}],
+
+Cell[BoxData["False"], "Output",
+ CellChangeTimes->{{3.6526013379070854`*^9, 3.6526013444804616`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"setMake", "@", 
+  RowBox[{"Range", "@", "3"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"setMake", "/@", 
+   RowBox[{"Subsets", "@", 
+    RowBox[{"%", "@", "\"\<elems\>\""}]}]}], "//", "setMake"}]}], "Input",
+ CellChangeTimes->{{3.6526024410861835`*^9, 3.652602455199991*^9}, {
+  3.652602490777026*^9, 3.6526025374476957`*^9}, {3.652602622427556*^9, 
+  3.6526026313720675`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{{3.6526024950922728`*^9, 3.6526025378357177`*^9}, {
+   3.6526026245246763`*^9, 3.652602631835094*^9}, 3.6528487465261164`*^9}],
+
+Cell[BoxData[
+ RowBox[{"set", "[", 
+  RowBox[{"\[LeftAssociation]", 
+   RowBox[{
+    RowBox[{"\<\"elems\"\>", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"set", "[", 
+        RowBox[{"\[LeftAssociation]", 
+         RowBox[{
+          RowBox[{"\<\"elems\"\>", "\[Rule]", 
+           RowBox[{"{", "}"}]}], ",", 
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+         "\[RightAssociation]"}], "]"}], ",", 
+       RowBox[{"set", "[", 
+        RowBox[{"\[LeftAssociation]", 
+         RowBox[{
+          RowBox[{"\<\"elems\"\>", "\[Rule]", 
+           RowBox[{"{", "1", "}"}]}], ",", 
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+         "\[RightAssociation]"}], "]"}], ",", 
+       RowBox[{"set", "[", 
+        RowBox[{"\[LeftAssociation]", 
+         RowBox[{
+          RowBox[{"\<\"elems\"\>", "\[Rule]", 
+           RowBox[{"{", "2", "}"}]}], ",", 
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+         "\[RightAssociation]"}], "]"}], ",", 
+       RowBox[{"set", "[", 
+        RowBox[{"\[LeftAssociation]", 
+         RowBox[{
+          RowBox[{"\<\"elems\"\>", "\[Rule]", 
+           RowBox[{"{", "3", "}"}]}], ",", 
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+         "\[RightAssociation]"}], "]"}], ",", 
+       RowBox[{"set", "[", 
+        RowBox[{"\[LeftAssociation]", 
+         RowBox[{
+          RowBox[{"\<\"elems\"\>", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+         "\[RightAssociation]"}], "]"}], ",", 
+       RowBox[{"set", "[", 
+        RowBox[{"\[LeftAssociation]", 
+         RowBox[{
+          RowBox[{"\<\"elems\"\>", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+         "\[RightAssociation]"}], "]"}], ",", 
+       RowBox[{"set", "[", 
+        RowBox[{"\[LeftAssociation]", 
+         RowBox[{
+          RowBox[{"\<\"elems\"\>", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+         "\[RightAssociation]"}], "]"}], ",", 
+       RowBox[{"set", "[", 
+        RowBox[{"\[LeftAssociation]", 
+         RowBox[{
+          RowBox[{"\<\"elems\"\>", "\[Rule]", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+          RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+         "\[RightAssociation]"}], "]"}]}], "}"}]}], ",", 
+    RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+   "\[RightAssociation]"}], "]"}]], "Output",
+ CellChangeTimes->{{3.6526024950922728`*^9, 3.6526025378357177`*^9}, {
+   3.6526026245246763`*^9, 3.652602631835094*^9}, 3.6528487465601187`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Outer", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"Inactive", "[", "Subset", "]"}], "[", 
+        RowBox[{"#", ",", "#2"}], "]"}], "\[DirectedEdge]", 
+       RowBox[{"Subset", "[", 
+        RowBox[{
+         RowBox[{"setMake", "@", "#"}], ",", 
+         RowBox[{"setMake", "@", "#2"}]}], "]"}]}], "&"}], ",", "#", ",", "#",
+      ",", "1"}], "]"}], "&"}], "@", "subsetsA"}]], "Input",
+ CellChangeTimes->{{3.652600997680626*^9, 3.652601088830839*^9}, {
+  3.6526011220507393`*^9, 3.652601147518196*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "1", "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "2", "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "3", "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "\[DirectedEdge]", 
+      "True"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "1", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "1", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "1", "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "1", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "2", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "1", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "3", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "1", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "1", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "1", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "1", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "\[DirectedEdge]", 
+      "True"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "2", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "2", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "1", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "2", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "2", "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "2", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "3", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "2", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "2", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "2", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "2", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "\[DirectedEdge]", 
+      "True"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "3", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "3", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "1", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "3", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "2", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "3", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "3", "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "3", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "3", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "3", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", "3", "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "\[DirectedEdge]", 
+      "True"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "1", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "2", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "3", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "\[DirectedEdge]", 
+      "True"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "1", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "2", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "3", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "\[DirectedEdge]", 
+      "True"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "1", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "2", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "3", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "\[DirectedEdge]", "True"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "\[DirectedEdge]", 
+      "True"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "1", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "2", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", "3", "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], "\[DirectedEdge]", "False"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}], 
+       TagBox["\[Subset]",
+        "InactiveToken",
+        BaseStyle->"Inactive",
+        Editable->False,
+        Selectable->False,
+        SyntaxForm->"\[Subset]"], 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "\[DirectedEdge]", 
+      "True"}]}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6526009915592756`*^9, 3.652601008618251*^9}, {
+  3.6526010825054774`*^9, 3.652601089283865*^9}, {3.652601126182976*^9, 
+  3.65260114811623*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"listBs", "//", "Clear"}]], "Input",
+ CellChangeTimes->{{3.6526009677299128`*^9, 3.6526009701720524`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"setBs", "//", "Clear"}]], "Input",
+ CellChangeTimes->{{3.6526009719981565`*^9, 3.6526009761753955`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["listBs"], "Input",
+ CellChangeTimes->{{3.6526009539971275`*^9, 3.6526009551371927`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "2", "}"}], ",", 
+   RowBox[{"{", "3", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6526009555262146`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["listA"], "Input",
+ CellChangeTimes->{{3.652600801780421*^9, 3.652600802777478*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3"}], "}"}]], "Output",
+ CellChangeTimes->{3.6526008031865015`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["setBs"], "Input",
+ CellChangeTimes->{{3.6526008203064804`*^9, 3.652600821541551*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "1", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "2", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "3", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6526008220355797`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["listBs"], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "2", "}"}], ",", 
+   RowBox[{"{", "3", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6526003523957176`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", "3", "}"}], "\[Subset]", 
+  RowBox[{"setMake", "@", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "4"}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.6526003809623513`*^9, 3.652600402192566*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6526003919729815`*^9, 3.652600402685594*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Input",
+ CellChangeTimes->{{3.652600645670492*^9, 3.6526006532689266`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "1", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "2", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "3", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.65260062780247*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Outer", "[", 
+   RowBox[{"Subset", ",", "setBs", ",", "setBs", ",", "1"}], "]"}], "//", 
+  "TableForm"}]], "Input",
+ CellChangeTimes->{{3.6525968965962114`*^9, 3.6525969504302907`*^9}, {
+   3.6526001921355515`*^9, 3.6526002014970865`*^9}, {3.6526003357707663`*^9, 
+   3.652600358522068*^9}, {3.652600413005184*^9, 3.652600441532816*^9}, 
+   3.652600614152689*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"True", "True", "True", "True", "True", "True", "True", "True"},
+    {"False", "True", "False", "False", "True", "True", "False", "True"},
+    {"False", "False", "True", "False", "True", "False", "True", "True"},
+    {"False", "False", "False", "True", "False", "True", "True", "True"},
+    {"False", "False", "False", "False", "True", "False", "False", "True"},
+    {"False", "False", "False", "False", "False", "True", "False", "True"},
+    {"False", "False", "False", "False", "False", "False", "True", "True"},
+    {"False", "False", "False", "False", "False", "False", "False", "True"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.6525969199375467`*^9, 3.6525969509373198`*^9}, 
+   3.6526002021711254`*^9, 3.6526003387799387`*^9, {3.6526004163803773`*^9, 
+   3.652600441869835*^9}, 3.6526006145887136`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["listBs"], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", "}"}], ",", 
+   RowBox[{"{", "1", "}"}], ",", 
+   RowBox[{"{", "2", "}"}], ",", 
+   RowBox[{"{", "3", "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "3"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.6526002634206285`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["setBs"], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "1", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "2", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", "3", "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}], ",", 
+   RowBox[{"SimpleSet`Private`set", "[", 
+    RowBox[{"\[LeftAssociation]", 
+     RowBox[{
+      RowBox[{"\<\"elems\"\>", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+      RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+     "\[RightAssociation]"}], "]"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.652600270145013*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Outer", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"##", ",", 
+       RowBox[{"Element", "@", "##"}]}], "}"}], "&"}], ",", "listBs", ",", 
+    "setBs", ",", "1"}], "]"}], "//", "TableFor"}]], "Input",
+ CellChangeTimes->{{3.6525968965962114`*^9, 3.6525969504302907`*^9}, {
+  3.6526001921355515`*^9, 3.6526002014970865`*^9}, {3.6526002479057407`*^9, 
+  3.652600248289763*^9}}],
+
+Cell[BoxData[
+ RowBox[{"TableFor", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "True"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "1", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "2", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "3", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "1", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "True"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "2", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "3", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "1", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "2", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "2", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "1", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "2", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "2", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "True"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "2", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "3", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "2", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "2", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "2", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "2", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "3", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "3", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "1", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "3", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "2", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "3", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "3", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "True"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "3", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "3", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "3", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", "3", "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "1", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "2", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "3", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "True"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "1", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "2", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "3", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "True"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "1", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "2", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "3", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "True"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "1", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "2", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", "3", "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "False"}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", 
+        RowBox[{"SimpleSet`Private`set", "[", 
+         RowBox[{"\[LeftAssociation]", 
+          RowBox[{
+           RowBox[{"\<\"elems\"\>", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3"}], "}"}]}], ",", 
+           RowBox[{"\<\"type\"\>", "\[Rule]", "\<\"immediate\"\>"}]}], 
+          "\[RightAssociation]"}], "]"}], ",", "True"}], "}"}]}], "}"}]}], 
+   "}"}], "]"}]], "Output",
+ CellChangeTimes->{3.652600248634783*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 734},
+WindowMargins->{{-4, Automatic}, {Automatic, -4}},
+Magnification:>1.25 Inherited,
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (July 1, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 122, 2, 132, "Section"],
+Cell[CellGroupData[{
+Cell[727, 28, 209, 3, 89, "Subsection"],
+Cell[CellGroupData[{
+Cell[961, 35, 265, 7, 55, "Input"],
+Cell[1229, 44, 322, 5, 90, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1588, 54, 929, 23, 192, "Input"],
+Cell[2520, 79, 326, 5, 90, "Output"],
+Cell[2849, 86, 329, 4, 226, "Output"],
+Cell[3181, 92, 215, 3, 55, "Output"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3457, 102, 19, 0, 132, "Section"],
+Cell[CellGroupData[{
+Cell[3501, 106, 148, 3, 55, "Input"],
+Cell[3652, 111, 314, 8, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4003, 124, 179, 4, 55, "Input"],
+Cell[4185, 130, 476, 10, 36, "Message"],
+Cell[4664, 142, 476, 10, 36, "Message"],
+Cell[5143, 154, 474, 10, 36, "Message"],
+Cell[5620, 166, 542, 11, 36, "Message"],
+Cell[6165, 179, 103, 1, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[6305, 185, 244, 5, 90, "Input"],
+Cell[6552, 192, 419, 10, 55, "Output"],
+Cell[6974, 204, 1220, 34, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8231, 243, 248, 5, 90, "Input"],
+Cell[8482, 250, 353, 8, 55, "Output"],
+Cell[8838, 260, 646, 15, 124, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9533, 281, 103, 1, 132, "Section"],
+Cell[9639, 284, 844, 19, 328, "Input"],
+Cell[CellGroupData[{
+Cell[10508, 307, 564, 11, 197, "Input"],
+Cell[11075, 320, 373, 9, 68, "Output"],
+Cell[11451, 331, 374, 9, 68, "Output"],
+Cell[11828, 342, 368, 9, 68, "Output"],
+Cell[12199, 353, 372, 9, 68, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12608, 367, 1430, 38, 240, "Input"],
+Cell[14041, 407, 1395, 30, 197, "Output"],
+Cell[15439, 439, 4222, 101, 211, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19698, 545, 383, 7, 68, "Input"],
+Cell[20084, 554, 325, 5, 325, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[20446, 564, 568, 12, 155, "Input"],
+Cell[21017, 578, 720, 18, 68, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21774, 601, 204, 4, 112, "Input"],
+Cell[21981, 607, 353, 8, 68, "Output"],
+Cell[22337, 617, 102, 1, 68, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22476, 623, 408, 9, 112, "Input"],
+Cell[22887, 634, 453, 10, 68, "Output"],
+Cell[23343, 646, 2912, 70, 325, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26292, 721, 586, 16, 112, "Input"],
+Cell[26881, 739, 21825, 733, 920, "Output"]
+}, Open  ]],
+Cell[48721, 1475, 129, 2, 68, "Input"],
+Cell[48853, 1479, 128, 2, 68, "Input"],
+Cell[CellGroupData[{
+Cell[49006, 1485, 102, 1, 68, "Input"],
+Cell[49111, 1488, 474, 15, 68, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49622, 1508, 97, 1, 68, "Input"],
+Cell[49722, 1511, 127, 3, 68, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49886, 1519, 99, 1, 68, "Input"],
+Cell[49988, 1522, 2490, 63, 367, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[52515, 1590, 32, 0, 68, "Input"],
+Cell[52550, 1592, 474, 15, 68, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53061, 1612, 226, 6, 68, "Input"],
+Cell[53290, 1620, 99, 1, 68, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53426, 1626, 112, 2, 68, "Input"],
+Cell[53541, 1630, 2487, 63, 367, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56065, 1698, 398, 8, 68, "Input"],
+Cell[56466, 1708, 1297, 25, 325, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[57800, 1738, 32, 0, 68, "Input"],
+Cell[57835, 1740, 474, 15, 68, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[58346, 1760, 31, 0, 68, "Input"],
+Cell[58380, 1762, 2488, 63, 367, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[60905, 1830, 430, 11, 68, "Input"],
+Cell[61338, 1843, 29271, 725, 2917, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
