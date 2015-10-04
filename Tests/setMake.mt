@@ -3,7 +3,7 @@
 Test[
     setMake@{3}
     ,
-    SimpleSet`Private`set@Association["elems" -> {3}, "type" -> "immediate"]
+    set@Association["elems" -> {3}, "type" -> "immediate"]
     ,
     TestID->"Test-20150930-S8X3R7"
 ]
@@ -11,7 +11,7 @@ Test[
 Test[
     setMake@{}
     ,
-    SimpleSet`Private`set@Association["elems" -> {}, "type" -> "immediate"]
+    set@Association["elems" -> {}, "type" -> "immediate"]
     ,
     TestID->"a"
 ]
@@ -19,7 +19,7 @@ Test[
 Test[
     setMake[]
     ,
-    SimpleSet`Private`set@Association["elems" -> {}, "type" -> "immediate"]
+    set@Association["elems" -> {}, "type" -> "immediate"]
     ,
     TestID->"no_arg"
 ]
