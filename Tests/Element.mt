@@ -11,7 +11,7 @@ Test[
 
 setEmpty = setMake@{}
 Test[
-    Element[3,setEmpty]
+    Element[3, setEmpty]
     ,
     False
     ,

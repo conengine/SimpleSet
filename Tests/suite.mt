@@ -1,7 +1,10 @@
 TestSuite@{
-"Element.mt",
-"Equal.mt",
-"setMake.mt",
-"singletonQ.mt",
-"Subsets.mt",
-"Union.mt"}
+	"Element.mt",
+	"Equal.mt",
+	"setMake_abstruct.mt",
+	"setMake_callWithOptions.mt",
+	"setMake_general.mt",
+	"setMake_immediate.mt",
+	"singletonQ.mt",
+	"Subsets.mt",
+	"Union.mt"}

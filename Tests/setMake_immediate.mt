@@ -17,14 +17,6 @@ Test[
 ]
 
 Test[
-    setMake[]
-    ,
-    set@Association["elems" -> {}, "type" -> "immediate"]
-    ,
-    TestID->"no_arg"
-]
-
-Test[
 	setMake@{1,3,1}
 	,
 	setMake@{1,3}
