@@ -21,24 +21,22 @@ Begin["`Private`"]
 (* Constructor *)
 
 (*setMake // Options = {"abstructSet" -> False}; *)
-setMake // Options = {"abstructSet" -> False, "elemQFunc"->None, "subsetEqualQFunc"->None};
+setMake // Options = 
+	{"abstructSet" -> False, "elemQFunc" -> None, "subsetEqualQFunc" -> None};
 
 (* TODO:Move 'abstructSets' from the Module to somewhere private.*)
-(* TODO:All abstruct set MUST have prop. "elemQFunc" and "subsetEqualQFunc". *)
+(* TODO:ALL abstruct set MUST have prop. "elemQFunc" and "subsetEqualQFunc". *)
+(* TODO:ALL abstruct set such as 'reals' are exclude from this m file (those sets are to be defined by users). *)
 Module[{abstructSets = {Primes, Integers, Rationals, Reals, Complexes}},
     setMake[arg_, OptionsPattern[]] /; MemberQ[abstructSets, arg] := 
         set@Association["elems" -> arg, "type" -> "abstruct"] /; OptionValue@"abstructSet" 
 ]
 
-(*setMake[arg_, OptionsPattern[]] := 
-    set@Association["elems" -> arg, "type" -> "abstruct"] /; OptionValue@"abstructSet"*)
 setMake[arg_, OptionsPattern[]] := 
     set@Association["elems" -> arg, "type" -> "abstruct",
         "elemQFunc" -> OptionValue@"elemQFunc",
         "subsetEqualQFunc" -> OptionValue@"subsetEqualQFunc"] /; OptionValue@"abstructSet"
 
-(*setMake[{}, OptionsPattern[]] := 
-    set@Association["elems" -> {}, "type" -> "abstruct"] /; OptionValue@"abstructSet"*)
 setMake[{}, OptionsPattern[]] := 
     set@Association["elems" -> {}, "type" -> "abstruct",
         "elemQFunc" -> OptionValue@"elemQFunc",
@@ -105,6 +103,8 @@ set /: (Alternatives|List)@B__ \[Element] A_set(*?immediateSetQ*) :=
 set /: b_ \[Element] A_set?immediateSetQ := MemberQ[A@"elems", b]
 set /: b_ \[Element] A_set?abstructSetQ /; MemberQ[omegaChainNumbers, A@"elems"] := 
     numberQfunc[A@"elems"]@b
+set /: b_ \[Element] A_set?abstructSetQ := 
+    A["elemQFunc"]@b
 
 set /: B_set?immediateSetQ \[SubsetEqual] A_set(*?immediateSetQ*) := B@"elems" \[Element] A 
 
@@ -121,6 +121,9 @@ set /: Length@A_set?immediateSetQ := Length@A@"elems"
 
 set /: Map[f_, A_set?immediateSetQ, levelspec_: {1}] := 
     Map[f, A@"elems", levelspec] // setMake
+
+set /: Map[f_]@A_set?immediateSetQ :=
+    Map[f]@A@"elems" // setMake
  
 set /: Subsets[A_set?immediateSetQ, args___] := setMake /@ Subsets@A@"elems" // setMake 
 
