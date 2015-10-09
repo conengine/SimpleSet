@@ -15,22 +15,19 @@ abstructSetQ::usage = "";
 Begin["`Private`"]
 (* Implementation of the package *)
 
-(* TODO:Move 'abstructSets' from Module to private.*)
 (* TODO:implement "comprehension" mechanism *)
-(* TODO:implement all method of abstruct ver.*)
-(* TODO:implement all method between  abstruct and immediate.*)
 
 (* ::Section:: *)
 (* Constructor *)
 
 setMake // Options = {"abstructSet" -> False}; 
 
+(* TODO:Move 'abstructSets' from Module to private.*)
 Module[{abstructSets = {Primes, Integers, Rationals, Reals, Complexes}},
     setMake[arg_, OptionsPattern[]] /; MemberQ[abstructSets, arg] := 
         set@Association["elems" -> arg, "type" -> "abstruct"] /; OptionValue@"abstructSet" 
 ]
 
-(*abstruct set:*)
 setMake[arg_, OptionsPattern[]] := 
     set@Association["elems" -> arg, "type" -> "abstruct"] /; OptionValue@"abstructSet"
 
@@ -41,18 +38,24 @@ setMake[{}, OptionsPattern[]] :=
 setMake[elems_List, OptionsPattern[]]  := 
     set@Association["elems" -> Union@elems, "type" -> "immediate"] /; Not@OptionValue@"abstructSet"
 
-setMake[x_, OptionsPattern[]] /; Not@OptionValue@"abstructSet" := x
+setMake[x_, OptionsPattern[]] := x /; Not@OptionValue@"abstructSet"
 
 (* ::Section:: *)
 (* 'set' data type *)
 
 set[ass_Association]~Format~TraditionalForm := 
- BracketingBar @@ (ass@"elems") /; ass@"type" == "immediate"
+ BracketingBar @@ (ass@"elems") (*/; ass@"type" == "immediate"*)
  
+(*set[ass_Association]~Format~TraditionalForm := 
+ BracketingBar @ (ass@"elems") /; ass@"type" == "abstruct"
+*) 
 set[ass_Association]@property_String := ass@property
 
 (* ::Section:: *)
 (* Methods *)
+
+(* TODO:Almost all Methods must be able to handle abstruct set.*)
+(* TODO:Add mechanisms in order to communicate between abstruct sets and immediate ones.*)
 
 singletonQ@A_set?immediateSetQ := Length@A == 1
 
