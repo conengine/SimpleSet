@@ -12,11 +12,11 @@ Test[
 Test[
 	setMake["strings", "abstructSet"->True, 
 		 "elemQFunc"->(StringQ@# && StringLength@# == 1 &),
-		 "subsetEqualQFunc"->StringQ]
+		 "subsetEqualQFunc" -> StringQ]
 	,
-	set@Association["elems"->"hoge", "type" -> "abstruct",
+	set@Association["elems"->"strings", "type" -> "abstruct",
 		"elemQFunc"->(StringQ@# && StringLength@# == 1 &),
-         "subsetEqualQFunc"->StringQ]
+         "subsetEqualQFunc" -> StringQ]
 	,
 	TestID->"User-defined abstruct set 2"
 ]
@@ -40,16 +40,8 @@ Test[
 Test[
     setMake["naturals", "abstructSet"->True]
     ,
-    set@Association["elems"->"naturals", "type" -> "abstruct"]
+    set@Association["elems" -> "naturals", "type" -> "abstruct", "elemQFunc" -> None, "subsetEqualQFunc" -> None]
     ,
     TestID->"setMake_abstruct_naturals"
-]
-
-Test[
-    setMake["twinPrimes", "abstructSet"->True]
-    ,
-    "error"
-    ,
-    TestID->"setMake_abstruct_unknown_set"
 ]
 

@@ -20,20 +20,29 @@ Begin["`Private`"]
 (* ::Section:: *)
 (* Constructor *)
 
-setMake // Options = {"abstructSet" -> False}; 
+(*setMake // Options = {"abstructSet" -> False}; *)
+setMake // Options = {"abstructSet" -> False, "elemQFunc"->None, "subsetEqualQFunc"->None};
 
-(* TODO:Move 'abstructSets' from Module to private.*)
+(* TODO:Move 'abstructSets' from the Module to somewhere private.*)
+(* TODO:All abstruct set MUST have prop. "elemQFunc" and "subsetEqualQFunc". *)
 Module[{abstructSets = {Primes, Integers, Rationals, Reals, Complexes}},
     setMake[arg_, OptionsPattern[]] /; MemberQ[abstructSets, arg] := 
         set@Association["elems" -> arg, "type" -> "abstruct"] /; OptionValue@"abstructSet" 
 ]
 
+(*setMake[arg_, OptionsPattern[]] := 
+    set@Association["elems" -> arg, "type" -> "abstruct"] /; OptionValue@"abstructSet"*)
 setMake[arg_, OptionsPattern[]] := 
-    set@Association["elems" -> arg, "type" -> "abstruct"] /; OptionValue@"abstructSet"
+    set@Association["elems" -> arg, "type" -> "abstruct",
+        "elemQFunc" -> OptionValue@"elemQFunc",
+        "subsetEqualQFunc" -> OptionValue@"subsetEqualQFunc"] /; OptionValue@"abstructSet"
 
+(*setMake[{}, OptionsPattern[]] := 
+    set@Association["elems" -> {}, "type" -> "abstruct"] /; OptionValue@"abstructSet"*)
 setMake[{}, OptionsPattern[]] := 
-    set@Association["elems" -> {}, "type" -> "abstruct"] /; OptionValue@"abstructSet"
-
+    set@Association["elems" -> {}, "type" -> "abstruct",
+        "elemQFunc" -> OptionValue@"elemQFunc",
+        "subsetEqualQFunc" -> OptionValue@"subsetEqualQFunc"] /; OptionValue@"abstructSet"
 
 setMake[elems_List, OptionsPattern[]]  := 
     set@Association["elems" -> Union@elems, "type" -> "immediate"] /; Not@OptionValue@"abstructSet"
