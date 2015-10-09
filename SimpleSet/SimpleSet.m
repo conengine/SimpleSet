@@ -8,6 +8,7 @@ BeginPackage["SimpleSet`"]
 set::usage = "";
 setMake::usage = "";
 
+mapAtElems::usage = "";
 singletonQ::usage = "";
 immediateSetQ::usage = "";
 abstructSetQ::usage = "";
@@ -64,6 +65,10 @@ set[ass_Association]@property_String := ass@property
 (* TODO:Almost all Methods must be able to handle abstruct set.*)
 (* TODO:Add mechanisms in order to communicate between abstruct sets and immediate ones.*)
 
+mapAtElems[f_, A_set?immediateSetQ, levelspec_:{1}] :=
+    Map[f, A@"elems", levelspec] // setMake
+mapAtElems[f_]@A_set?immediateSetQ := mapAtElems[f, A]
+
 singletonQ@A_set?immediateSetQ := Length@A == 1
 
 immediateSetQ@A_set /; A@"type" == "immediate" = True;
@@ -119,11 +124,11 @@ set /: A_set?immediateSetQ~Complement~B_set?immediateSetQ :=
 
 set /: Length@A_set?immediateSetQ := Length@A@"elems"
 
-set /: Map[f_, A_set?immediateSetQ, levelspec_: {1}] := 
+(*set /: Map[f_, A_set?immediateSetQ, levelspec_: {1}] := 
     Map[f, A@"elems", levelspec] // setMake
 
 set /: Map[f_]@A_set?immediateSetQ :=
-    Map[f]@A@"elems" // setMake
+    Map[f]@A@"elems" // setMake*)
  
 set /: Subsets[A_set?immediateSetQ, args___] := setMake /@ Subsets@A@"elems" // setMake 
 

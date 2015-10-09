@@ -1,7 +1,7 @@
 TestSuite@{
 	"Element.mt",
 	"Equal.mt",
-	"methods_overload_Map.mt",
+	"mapAtElems.mt",
 	"setMake_abstruct.mt",
 	"setMake_callWithOptions.mt",
 	"setMake_general.mt",
