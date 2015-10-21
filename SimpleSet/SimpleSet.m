@@ -63,7 +63,7 @@ set[ass_Association]@property_String := ass@property
 (* Methods *)
 
 (* TODO:Almost all Methods must be able to handle abstruct set.*)
-(* TODO:Add mechanisms in order to communicate between abstruct sets and immediate ones.*)
+(* TODO:Add mechanisms s.t. communicate between abstruct sets and immediate ones.*)
 
 mapAtElems[f_, A_set?immediateSetQ, levelspec_:{1}] :=
     Map[f, A@"elems", levelspec] // setMake
@@ -132,10 +132,19 @@ set /: Map[f_]@A_set?immediateSetQ :=
  
 set /: Subsets[A_set?immediateSetQ, args___] := setMake /@ Subsets@A@"elems" // setMake 
 
-Module[{funcToBypass = {Sort, Union, Part, Permutations, MemberQ}},
+Module[{funcToBypass = {Sort, Union, Part, Permutations, MemberQ, Select, SelectFirst}},
     set /: func_?(MemberQ[funcToBypass, #]&)[A_set?immediateSetQ, argsForFunc___] := 
         setMake@func[A@"elems", argsForFunc]
 ]
+
+Module[{funcPartialImplemention = {Select, SelectFirst}},
+    set /: func_?(MemberQ[funcPartialImplemention, #]&)[arg_]@A_set?immediateSetQ := 
+        func[A, arg]
+]
+
+
+(*set /: Select[crit_]@A_set?immediateSetQ := Select[A, crit]*) 
+    
 
 (*set /: Part[A_set, args__] /; A@"type" == "immediate" := Part[A@"elems", args]*)
 

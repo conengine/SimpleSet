@@ -2,6 +2,8 @@ TestSuite@{
 	"Element.mt",
 	"Equal.mt",
 	"mapAtElems.mt",
+	"SelectFirst.mt",
+	"Select.mt",
 	"setMake_abstruct.mt",
 	"setMake_callWithOptions.mt",
 	"setMake_general.mt",
